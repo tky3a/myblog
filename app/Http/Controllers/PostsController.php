@@ -19,4 +19,12 @@ class PostsController extends Controller
     return view('posts.index')->with('posts', $posts);
   }
     //
+
+
+    # showアクションを定義(引数に$idを与える)
+    public function show($id) {
+      // $post = Post::find($id);
+      $post = Post::findOrFail($id);
+      return view('posts.show')->with('post', $post);
+    }
 }
