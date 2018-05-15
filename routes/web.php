@@ -14,4 +14,5 @@
 //rootにアクセスした場合PostsControllerのindexアクションを実行する
 Route::get('/', 'PostsController@index'); #indexアクションにアクセス
 // Route::get('/posts/{id}', 'PostsController@show'); #showアクションにアクセス(id別)
-Route::get('/posts/{post}', 'PostsController@show');
+Route::get('/posts/{post}', 'PostsController@show')->where('post', '[0-9]+');
+Route::get('/posts/create', 'PostsController@create');

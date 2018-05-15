@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="ja" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>{{ $post->title }}</title>
-    <link rel="stylesheet" href="/css/styles.css">
-  </head>
-  <body>
-    <div class="container">
-        <h1>{{ $post->title }}</h1>
-        <p>{!! nl2br(e($post->body)) !!}</p>
-    </div>
-  </body>
-</html>
+<!--継承先宣言-->
+@extends('layouts.default')
+
+<!--titleを継承できる様に宣言-->
+@section('title', $post->title)
+
+@section('content')
+<h1>
+  <a href="{{ url('/') }}" class="header-menu">Back</a>
+  {{ $post->title }}
+</h1>
+<p>{!! nl2br(e($post->body)) !!}</p>
+@endsection

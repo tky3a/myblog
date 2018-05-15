@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="ja" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Blog Posts</title>
-    <link rel="stylesheet" href="/css/styles.css">
-  </head>
-  <body>
-    <div class="container">
-        <h1>Blog Posts</h1>
+<!-- 継承先を宣言 -->
+@extends('layouts.default')
+
+
+<!-- titleを継承できるように宣言 -->
+@section('title', 'Blog Posts')
+
+     <!-- contentを継承できる様に宣言  -->
+      @section('content')
+        <h1>
+          <a href="{{ url ('/posts/create') }}" class="header-menu">New Post</a>
+          Blog Posts
+        </h1>
         <ul>
-          <!-- ループ処理 -->
-          {{--
-          @foreach ($posts as $post)
-          @endforeach
-          --}}
           <!-- もし$postsが空だった場合の処理 -->
           @forelse ($posts as $post)
           <!--Postsコントローラーのshowアクションの$post->idに移動-->
@@ -22,6 +20,4 @@
           <li>No posts yet</li>
           @endforelse
         </ul>
-    </div>
-  </body>
-</html>
+      @endsection
