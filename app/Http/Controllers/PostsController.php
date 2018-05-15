@@ -28,4 +28,9 @@ class PostsController extends Controller
       // $post = Post::findOrFail($id);
       return view('posts.show')->with('post', $post);
     }
+
+    # createアクションを定義
+    public function create() {
+      return view('posts.create');
+    }
 }
