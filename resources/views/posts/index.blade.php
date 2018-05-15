@@ -17,7 +17,7 @@
           <!-- もし$postsが空だった場合の処理 -->
           @forelse ($posts as $post)
           <!--Postsコントローラーのshowアクションの$post->idに移動-->
-          <li><a href="{{ action('PostsController@show', $post->id) }}">{{ $post->title }}</a></li>
+          <li><a href="{{ action('PostsController@show', $post) }}">{{ $post->title }}</a></li>
           @empty
           <li>No posts yet</li>
           @endforelse
