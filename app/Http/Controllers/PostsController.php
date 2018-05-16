@@ -33,4 +33,23 @@ class PostsController extends Controller
     public function create() {
       return view('posts.create');
     }
+    # storeアクション
+    // formから送信されたデータを受け取る場合Requestする必要がある(getではなくpostの場合)
+    public function store(Request $request) {
+      # バリデーション
+      $this->validate($request, [
+        'title' => 'required|min:3', // title必須で3文字以上必要
+        'body' => 'required' // body必須
+      ]);
+      $post = new Post();
+      $post->title = $request->title; //postのtitleがrequestのtitle
+      $post->body = $request->body; //　postのbodyがrequestのbody
+      $post->save();
+      return redirect('/'); //フォームを保存出来たらルートに飛ぶ
+    }
+
+    # editアクション
+    public function edit(Post $post) {
+      return view('posts.edit')->with('post', $post);
+    }
 }
