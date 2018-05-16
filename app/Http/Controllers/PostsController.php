@@ -52,4 +52,17 @@ class PostsController extends Controller
     public function edit(Post $post) {
       return view('posts.edit')->with('post', $post);
     }
+
+    public function update(Request $request, Post $post) {
+      # バリデーション
+      $this->validate($request, [
+        'title' => 'required|min:3', // title必須で3文字以上必要
+        'body' => 'required' // body必須
+      ]);
+      
+      $post->title = $request->title; //postのtitleがrequestのtitle
+      $post->body = $request->body; //　postのbodyがrequestのbody
+      $post->save();
+      return redirect('/'); //フォームを保存出来たらルートに飛ぶ
+    }
 }
