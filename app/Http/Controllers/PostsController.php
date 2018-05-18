@@ -53,10 +53,6 @@ class PostsController extends Controller
 
     public function update(PostRequest $request, Post $post) {
       # バリデーションをPostRequestで管理
-      $this->validate($request, [
-        'title' => 'required|min:3', // title必須で3文字以上必要
-        'body' => 'required' // body必須
-      ]);
 
       $post->title = $request->title; //postのtitleがrequestのtitle
       $post->body = $request->body; //　postのbodyがrequestのbody

@@ -20,3 +20,5 @@ Route::post('/posts', 'PostsController@store');
 Route::get('/posts/{post}/edit', 'PostsController@edit');
 Route::patch('/posts/{post}', 'PostsController@update'); // 記事の更新ルーティング
 Route::delete('/posts/{post}', 'PostsController@destroy'); //削除ルーティング
+Route::post('/posts/{post}/comments', 'CommentsController@store');
+Route::delete('/posts/{post}/comments/{comment}', 'CommentsController@destroy');
