@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 //use: 名前空間を省略化
 use Illuminate\Http\Request;
 use App\Post; //useすることで名前空間に\App\Post::処理内容();等と書かないといけないものが、Post::処理内容();と省略できる
-use App\Http\Requests\PostRequest
+use App\Http\Requests\PostRequest;
 
 class PostsController extends Controller
 {
