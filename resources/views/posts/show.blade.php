@@ -10,4 +10,18 @@
   {{ $post->title }}
 </h1>
 <p>{!! nl2br(e($post->body)) !!}</p>
+
+<h2>Comments</h2>
+<ul>
+  <!-- もし$postsが空だった場合の処理 -->
+  @forelse ($post->comments as $comment)
+  <!--Postsコントローラーのshowアクションの$post->idに移動-->
+  <li>
+    {{ $comment->body }}
+  </li>
+  @empty
+  <li>No commnet yet</li>
+  @endforelse
+</ul>
+
 @endsection
