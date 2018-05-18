@@ -63,4 +63,10 @@ class PostsController extends Controller
       $post->save();
       return redirect('/'); //フォームを保存出来たらルートに飛ぶ
     }
+
+    #destroyアクション #インプリシットバインディング
+    public function destroy(Post $post) {
+      $post->delete();
+      return redirect('/');
+    }
 }
