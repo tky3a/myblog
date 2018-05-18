@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 //use: 名前空間を省略化
 use Illuminate\Http\Request;
 use App\Post; //useすることで名前空間に\App\Post::処理内容();等と書かないといけないものが、Post::処理内容();と省略できる
+use App\Http\Requests\PostRequest
 
 class PostsController extends Controller
 {
@@ -35,12 +36,9 @@ class PostsController extends Controller
     }
     # storeアクション
     // formから送信されたデータを受け取る場合Requestする必要がある(getではなくpostの場合)
-    public function store(Request $request) {
-      # バリデーション
-      $this->validate($request, [
-        'title' => 'required|min:3', // title必須で3文字以上必要
-        'body' => 'required' // body必須
-      ]);
+    public function store(PostRequest $request) {
+      # バリデーションをPostRequestで管理
+
       $post = new Post();
       $post->title = $request->title; //postのtitleがrequestのtitle
       $post->body = $request->body; //　postのbodyがrequestのbody
@@ -53,13 +51,13 @@ class PostsController extends Controller
       return view('posts.edit')->with('post', $post);
     }
 
-    public function update(Request $request, Post $post) {
-      # バリデーション
+    public function update(PostRequest $request, Post $post) {
+      # バリデーションをPostRequestで管理
       $this->validate($request, [
         'title' => 'required|min:3', // title必須で3文字以上必要
         'body' => 'required' // body必須
       ]);
-      
+
       $post->title = $request->title; //postのtitleがrequestのtitle
       $post->body = $request->body; //　postのbodyがrequestのbody
       $post->save();
